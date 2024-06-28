@@ -15,8 +15,12 @@ import unittest
 #   eyes
 #   color
 #   master
-
-
+class Minion():
+    def __init__(self, name_input, eyes_input, color_input, master_input):
+        self.name = name_input
+        self.eyes = eyes_input
+        self.color = color_input
+        self.master = master_input
 # ======================= DO NOT EDIT THE CODE BELOW =========================
 
 class MinionTest(unittest.TestCase):

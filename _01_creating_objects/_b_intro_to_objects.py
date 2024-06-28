@@ -29,7 +29,10 @@ class Car:
 #       2) Look at the Car class and figure out how to drive the car 50 miles
 #       3) return the Car Object from the test_drive() function
 def test_drive():
-
+    timmy = Car()
+    timmy.add_gasoline()
+    timmy.drive(50)
+    return timmy
     return None
 
 # ================== DO NOT MODIFY THE CODE BELOW ============================

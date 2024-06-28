@@ -33,13 +33,14 @@ if __name__ == '__main__':
     draw_background()
 
     # TODO 1) Create an empty list of turtles
-
+    turtles = list()
+    for i in turtles:
     # TODO 2) Create a new turtle and set its shape to 'turtle
-
+        turtles[i] = turtle.Turtle()
     # TODO 3) Set the turtle's speed to 3
-
+        turtles[i].speed(3)
     # TODO 4) Set the turtle's pen up
-
+        turtles[i].penup()
     # TODO 5) Use the turtle's goto() method to set its position on the left
     #  side of the screen
 
