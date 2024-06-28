@@ -51,3 +51,4 @@ if __name__ == '__main__':
     # TODO 6) Use your NetflixQueue object to finish the sentence "the best movie is...."
     # TODO 7) Use your NetflixQueue to finish the sentence "the second best movie is...."
 
+    shrek_2 = Movie("Shrek 2", 5)
