@@ -52,3 +52,21 @@ if __name__ == '__main__':
     # TODO 7) Use your NetflixQueue to finish the sentence "the second best movie is...."
 
     shrek_2 = Movie("Shrek 2", 5)
+    twilight = Movie("twilight", 0)
+    despicable_me = Movie("Despicable Me", 4.5)
+    netflix_original = Movie("The lies of Thomas: How one kids show deceived millions by covering up a massive money laundering scandal.", 2.1)
+    bad_movie = Movie("The Best Movie Ever Made!", 0.7)
+
+    netflix_original.get_ticket_price()
+
+    netflix = NetflixQueue()
+    netflix.add_movie(shrek_2)
+    netflix.add_movie(twilight)
+    netflix.add_movie(despicable_me)
+    netflix.add_movie(netflix_original)
+    netflix.add_movie(bad_movie)
+    netflix.print_movies()
+    netflix.sort_movies_by_rating()
+    netflix.get_movie(1)
+    print("The best movie is ", netflix.get_best_movie().to_string())
+    print("The second best movie is ", netflix.get_movie(1).to_string())
