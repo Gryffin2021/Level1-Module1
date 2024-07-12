@@ -7,17 +7,16 @@ global started
 started = False
 
 def setup():
-    pass
     # 1. Set the size of your window to at least width = 800, height = 600
-
+    size(800, 600)
     # 2. Make a global ball variable, for example:
-    
+    global ball
     # 3. Initialize your ball variable to a new Ball(), for example:
-    
+    ball = new Ball()
     # 4. Make a global paddle variable.
-    
+    global paddle
     # 5. Initialize your paddle variable to a new Paddle() for example:
-    
+    paddle = new Paddle()
 def draw():
     if not started:
         textSize(32)
@@ -27,10 +26,11 @@ def draw():
     
     # 6. Use the background() function to set the background color.
     #    background(0) will set a classic black background
-
+    background(0)
     # 7. Call the ball object's update() and draw() methods.
     #    Do you see the ball moving on the screen?
-
+    ball.update()
+    ball.draw()
     # 8. Call the paddle object's update() and draw() methods.
     #    Do you see the paddle on the screen?
 

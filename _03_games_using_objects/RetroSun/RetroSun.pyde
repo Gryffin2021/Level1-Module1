@@ -26,18 +26,20 @@ sun_colors = [
 def setup():
     pass
     # TODO 1) Set the size of your sketch
-
+    size(1500, 1000)
     """
     * PART I: Drawing the sun
     * See 1st image 
     """
 
     # TODO 2) Draw the bg_color background color using the background() function
-    
+    background(bg_color)
     # TODO 3) Draw an ellipse for the sun in the center of the window
     # Use fill(sun_colors[0]) to make it yellow
     # Use noStroke() to remove the black outline
-    
+    fill(sun_colors[0])
+    noStroke()
+    ellipse(750, 500, 700, 700)
     # Do you see a yellow sun like in the 1st image?
     # If not, fix your code before proceeding.
     
@@ -50,16 +52,16 @@ def setup():
     """
     
     # Call the loadPixels() function to load the pixels list variable.
-    
+    loadPixels()
     # Loop through all the pixels in your window.
     # A pixel is a 1x1 square, so if your window width is 600 and the 
     # height is 400 (600x400), then there are 600 * 400 = 240,000 pixels
-        
+    for i in pixels.length:
         # We want to change the color of our sun so use an if statement
         # to check if the pixel is the color of the yellow circle.
         # pixels[i] is the color of the pixel.
         # sun_colors[0] is the color of the sun.
-            
+            if pixels[i]
             # If it's the same color we need to map the pixel to a
             # color in our sun_colors list (see 2nd gradient image)
        
