@@ -1,5 +1,9 @@
 global bg_color, sun_colors, sun_radius
-
+global y1
+global h
+global y2, h2    
+global y3, h3
+global y4, h4
 sun_radius = 250
 bg_color = color(31, 0, 48)
 
@@ -24,9 +28,21 @@ sun_colors = [
 """
 
 def setup():
-    pass
+    global y1
+    global h
+    global y2, h2
+    global y3, h3
+    global y4, h4
     # TODO 1) Set the size of your sketch
-    size(1500, 1000)
+    size(1000, 1000)
+    y1 = (width / 2) + 200
+    h = 40
+    y2 = (width / 2) + 250
+    h2 = 40
+    y3 = (width / 2) + 300
+    h3 = 40
+    y4 = (width / 2) + 350
+    h4 = 40
     """
     * PART I: Drawing the sun
     * See 1st image 
@@ -39,10 +55,10 @@ def setup():
     # Use noStroke() to remove the black outline
     fill(sun_colors[0])
     noStroke()
-    ellipse(750, 500, 700, 700)
+    ellipse(width/2, height/2, 500, 500)
     # Do you see a yellow sun like in the 1st image?
     # If not, fix your code before proceeding.
-    
+
     """
     * PART II: Drawing a color gradient on the sun
     * See 2nd image
@@ -56,35 +72,41 @@ def setup():
     # Loop through all the pixels in your window.
     # A pixel is a 1x1 square, so if your window width is 600 and the 
     # height is 400 (600x400), then there are 600 * 400 = 240,000 pixels
-    for i in pixels.length:
+    for i in range(width*height):
         # We want to change the color of our sun so use an if statement
         # to check if the pixel is the color of the yellow circle.
         # pixels[i] is the color of the pixel.
         # sun_colors[0] is the color of the sun.
-            if pixels[i]
+        if pixels[i] == sun_colors[0]:
             # If it's the same color we need to map the pixel to a
             # color in our sun_colors list (see 2nd gradient image)
-       
+            
             # The top of the sun is yellow (sun_colors[0]) and the bottom
             # of the sun is red (sun_colors[len(sun_colors) - 1]
-            
+            sun_top_y = (height/2) - sun_radius
+            sun_bottom_y = (height/2) + sun_radius
             # In order to get the right color, the y value from the top of
             # the sun to the bottom has to be mapped to a range from 0 to 1.
             # Use the map() function to do that:
             # y = i / width
             # step = map(y, sun_top_y, sun_bottom_y, 0, 1)
-
+            y = i / width
+            step = map(y, sun_top_y, sun_bottom_y, 0, 1)
             # Call interpolateColor(sun_colors, step) and save the color
             # variable that's returned into a variable
-            
+            interp = interpolate_color(sun_colors, step)
             # Set the pixel at pixels[i] to the color from the previous step
-
+            pixels[i] = interp
 
     # Call updatePixels() to apply the changes made to the pixels list
-
+    updatePixels()
 
 def draw():
-    pass
+    global y1, sun_radius
+    global h
+    global y2, h2
+    global y3, h3
+    global y4, h4
     """
     * PART III: Drawing the missing sections at the bottom of the sun
     * See 3rd image
@@ -94,9 +116,9 @@ def draw():
     """
 
     # Call updatePixels() to redraw the background and sun
-    
+    updatePixels()
     # Set the fill() color to bg_color
-
+    fill(bg_color)
     # To draw each rectangle we need to find its x, y, width, height
     # *The y position can be any value within the sun:
     #   y = width / 2
@@ -106,7 +128,9 @@ def draw():
     #   x = sun_center_x - sun_radius
     # * The width can be 2 times the radius
     #   w = 2 * sun_radius
-   
+    x = (width/2) - sun_radius
+    w = 2 * sun_radius
+    rect(x, y1, w, h)
     # Do you see a section missing from the sun like in the 3rd image?
 
     """
@@ -121,26 +145,43 @@ def draw():
     # function AND initialize it in the setup() function.
     # *HINT* You will have to put 'global y', where y is your variable,
     #        in setup() and draw()
-   
+    y1 -= 1
+    y2 -= 1
+    y3 -= 1
+    y4 -= 1
     # Do you see the rectangle moving upwards?
     # See image 4
    
     # Pick a y positon to be the location when the sections stop moving up.
     # If the rectangle's y positon is above this, move the rectangle's
     # y position back to the bottom of the sun.
-
+    if y1 == 400:
+        y1 = 750
+        h = 40
+    if y2 == 400:
+        y2 = 750
+        h2 = 40
+    if y3 == 400:
+        y3 = 750
+        h3 = 40
+    if y4 == 400:
+        y4 = 750
+        h4 = 40
     # Does the rectangle move back to the bottom?
    
     # Decrease the the height of the rectangle as it moves upwards.
     # Similar to the y positon, a variable for the height needs to be
     # created if it doesn't already exist.
-
+    h -= .1095
+    h2 -= .1095
+    h3 -= .1095
+    h4 -= .1095
     # Adjust the amount to decrease so that it disappears close to the top.
     
     # Add code to reset the height of the rectangle when it moves back to
     # the bottom of the sun.
     # See image 5
-   
+    
     """
     * PART V: Moving more missing sun sections
     *
@@ -151,8 +192,13 @@ def draw():
     # code you wrote for the 1 missing sun section.
     # *HINT* You can use the Rectangle class defined below to create
     #        a list of rectangles and a loop to iterate through each one.
-
-
+    rectangles = []
+    rectangles.append(Rectangle(x, y2, w, h2))
+    rectangles.append(Rectangle(x, y3, w, h3))
+    rectangles.append(Rectangle(x, y4, w, h4))
+    for i in rectangles:
+        i.draw()
+        i.update()
     """
     * PART VI: Adding extras
     *
